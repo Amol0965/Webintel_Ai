@@ -123,7 +123,7 @@ If the answer cannot be found, say:
 
                         chain = ( {
                                 "context": retriever,
-                                 "question": lambda x: x
+                                 "input": lambda x: x
                                                                 }
                                         | prompt
                                         | llm
