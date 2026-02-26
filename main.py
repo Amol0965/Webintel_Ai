@@ -130,7 +130,7 @@ If the answer cannot be found, say:
                                         | StrOutputParser()
                                 )
 
-                        response = chain.invoke(question)
+                        response = chain.invoke(user_query)
 
                         answer = response.get("answer", "No response generated.")
                         st.write(answer)
