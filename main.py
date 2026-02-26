@@ -11,9 +11,9 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains.retrieval import create_retrieval_chain
-from langchain.chains.combine_documents.stuff import create_stuff_documents_chain
+from langchain_core.output_parsers import StrOutputParser
 
 # --- Config ---
 st.set_page_config(page_title="WebIntel AI", page_icon="🔍", layout="wide")
