@@ -132,7 +132,7 @@ If the answer cannot be found, say:
 
                         response = chain.invoke(user_query)
 
-                        answer = response.get("answer", "No response generated.")
+                        answer = response
                         st.write(answer)
 
                         st.session_state.messages.append({"role": "assistant", "content": answer})
