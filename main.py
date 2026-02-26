@@ -117,11 +117,20 @@ If the answer cannot be found, say:
 """
 )
 
-                        document_chain = create_stuff_documents_chain(llm, prompt)
+                        
                         retriever = st.session_state.vectors.as_retriever(search_kwargs={"k": 5})
-                        retrieval_chain = create_retrieval_chain(retriever, document_chain)
+                        from langchain_core.output_parsers import StrOutputParser
 
-                        response = retrieval_chain.invoke({"input": user_query})
+                        chain = ( {
+                                "context": retriever,
+                                 "question": lambda x: x
+                                                                }
+                                        | prompt
+                                        | llm
+                                        | StrOutputParser()
+                                )
+
+                        response = chain.invoke(question)
 
                         answer = response.get("answer", "No response generated.")
                         st.write(answer)
